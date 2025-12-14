@@ -145,4 +145,81 @@ def average_lecture_grade_for_course(lecturers, course_name):
         return 0
     return sum(total_grades) / len(total_grades)
 
+# Создадим по 2 экземпляра каждого классов:
+student1 = Student('Анна', 'Иванова', 'Ж')
+student2 = Student('Петр', 'Сидоров', 'М')
 
+lecturer1 = Lecturer('Мария', 'Петрова')
+lecturer2 = Lecturer('Алексей', 'Смирнов')
+
+reviewer1 = Reviewer('Ольга', 'Кузнецова')
+reviewer2 = Reviewer('Дмитрий', 'Васильев')
+
+# Назначим курсы студентам и лекторам:
+student1.courses_in_progress = ['Python', 'Java']
+student1.finished_courses = ['Введение в программирование']
+
+student2.courses_in_progress = ['Python', 'C++']
+student2.finished_courses = ['Алгоритмы']
+
+lecturer1.courses_attached = ['Python', 'Java']
+lecturer2.courses_attached = ['Python', 'C++']
+
+reviewer1.courses_attached = ['Python', 'Java']
+reviewer2.courses_attached = ['Python', 'C++']
+
+# Выставим оценки студентам (ревьюверами):
+reviewer1.rate_hw(student1, 'Python', 5)
+reviewer1.rate_hw(student1, 'Python', 8)
+reviewer1.rate_hw(student1, 'Java', 7)
+reviewer2.rate_hw(student2, 'Python', 10)
+reviewer2.rate_hw(student2, 'C++', 9)
+
+# Выставим оценки лекторам (студентами):
+student1.rate_lecture(lecturer1, 'Python', 7)
+student1.rate_lecture(lecturer1, 'Java', 9)
+student2.rate_lecture(lecturer2, 'Python', 10)
+student2.rate_lecture(lecturer2, 'C++', 9)
+
+# Выведем информацию об экземплярах:
+print("\n=== Информация о студентах ===")
+print(student1)
+print("\n" + "-"*50 + "\n")
+print(student2)
+print("\n" + "-"*50 + "\n")
+
+print("\n=== Информация о лекторах ===")
+print(lecturer1)
+print("\n" + "-"*50 + "\n")
+print(lecturer2)
+print("\n" + "-"*50 + "\n")
+
+print("\n=== Информация о ревьюверах ===")
+print(reviewer1)
+print("\n" + "-"*50 + "\n")
+print(reviewer2)
+print("\n" + "-"*50 + "\n")
+
+# Сравним студентов по средним оценкам:
+print("\n=== Сравнение студентов ===")
+print(f"Студент1 > Студент2: {student1 > student2}")
+print(f"Студент1 < Студент2: {student1 < student2}")
+print(f"Студент1 == Студент2: {student1 == student2}")
+
+# Сравним лекторов по средним оценкам:
+print("\n=== Сравнение лекторов ===")
+print(f"Лектор1 > Лектор2: {lecturer1 > lecturer2}")
+print(f"Лектор1 < Лектор2: {lecturer1 < lecturer2}")
+print(f"Лектор1 == Лектор2: {lecturer1 == lecturer2}")
+
+# Применим функции для подсчета средних оценок по курсам:
+students_list = [student1, student2]
+lecturers_list = [lecturer1, lecturer2]
+
+print("\n=== Средние оценки по курсам ===")
+course = 'Python'
+hw_average = average_hw_grade_for_course(students_list, course)
+lecture_average = average_lecture_grade_for_course(lecturers_list, course)
+
+print(f"Средняя оценка за домашние задания по курсу '{course}': {hw_average:.1f}")
+print(f"Средняя оценка за лекции по курсу '{course}': {lecture_average:.1f}")
