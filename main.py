@@ -122,3 +122,22 @@ class Reviewer(Mentor): # эксперты, проверяющие домашн�
 #print(student.rate_lecture(reviewer, 'Python', 6))   # Ошибка
  
 #print(lecturer.grades)  # {'Python': [7]}  
+
+def average_hw_grade_for_course(students, course_name):
+    total_grades = []
+    for student in students:
+        if course_name in student.grades:
+            total_grades.extend(student.grades[course_name])
+    if not total_grades:
+        return 0
+    return sum(total_grades) / len(total_grades)
+
+def average_lecture_grade_for_course(lecturers, course_name):
+    total_grades = []
+    for lecturer in lecturers:
+        if course_name in lecturer.grades:
+            total_grades.extend(lecturer.grades[course_name])
+    if not total_grades:
+        return 0
+    return sum(total_grades) / len(total_grades)
+
