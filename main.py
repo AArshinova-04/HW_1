@@ -23,8 +23,8 @@ class Student:
         courses_in_progress = ', '.join(self.courses_in_progress)
         finished_courses = ', '.join(self.finished_courses)
         average_grade_count = self.average_grade()
-        return (f'Имя {self.name}\n'
-                f'Фамилия {self.surname}\n' 
+        return (f'Имя: {self.name}\n'
+                f'Фамилия: {self.surname}\n' 
                 f'Средняя оценка за домашние задания: {average_grade_count:.1f}\n' 
                 f'Курсы в процессе изучения: {courses_in_progress}\n'
                 f'Завершенные курсы: {finished_courses}')
@@ -64,9 +64,9 @@ class Lecturer(Mentor): # лекторы
 
     def __str__(self):
         average_grade_count = self.average_grade()
-        return (f'Имя {self.name}\n'
-                f'Фамилия{self.surname}\n'
-                f'Средняя оценка за лекции:{average_grade_count:.1f}\n')
+        return (f'Имя: {self.name}\n'
+                f'Фамилия: {self.surname}\n'
+                f'Средняя оценка за лекции: {average_grade_count:.1f}\n')
 
     def average_grade(self): # Вычислим среднюю оценку за лекции от студентов
         if not self.grades:
@@ -107,6 +107,10 @@ class Reviewer(Mentor): # эксперты, проверяющие домашн�
                 student.grades[course] = [grade]               
         else:
             return 'Ошибка'
+        
+    def __str__(self):
+        return (f'Имя: {self.name}\n'
+                f'Фамилия: {self.surname}')    
 
 #lecturer = Lecturer('Иван', 'Иванов')
 #reviewer = Reviewer('Пётр', 'Петров')
@@ -140,4 +144,5 @@ def average_lecture_grade_for_course(lecturers, course_name):
     if not total_grades:
         return 0
     return sum(total_grades) / len(total_grades)
+
 
