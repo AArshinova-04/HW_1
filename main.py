@@ -35,6 +35,21 @@ class Student:
             for grade in grades:
                 all_grades.append(grade)
         return sum(all_grades) / len(all_grades)    
+    
+    def __eq__(self, other):
+        if not isinstance(other, Student):
+            return NotImplemented
+        return self.average_grade() == other.average_grade()
+
+    def __lt__(self, other):
+        if not isinstance(other, Student):
+            return NotImplemented
+        return self.average_grade() < other.average_grade()
+
+    def __gt__(self, other):
+        if not isinstance(other, Student):
+            return NotImplemented
+        return self.average_grade() > other.average_grade()    
 
 class Mentor:
     def __init__(self, name, surname):
@@ -61,6 +76,21 @@ class Lecturer(Mentor): # лекторы
             for grade in grades:
                 all_grades.append(grade)
         return sum(all_grades) / len(all_grades)        
+    
+    def __eq__(self, other):
+        if not isinstance(other, Lecturer):
+            return NotImplemented
+        return self.average_grade() == other.average_grade()
+
+    def __lt__(self, other):
+        if not isinstance(other, Lecturer):
+            return NotImplemented
+        return self.average_grade() < other.average_grade()
+
+    def __gt__(self, other):
+        if not isinstance(other, Lecturer):
+            return NotImplemented
+        return self.average_grade() > other.average_grade()    
 
 class Reviewer(Mentor): # эксперты, проверяющие домашние задания
     def __init__(self, name, surname):
